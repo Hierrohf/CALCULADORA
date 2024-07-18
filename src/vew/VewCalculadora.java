@@ -21,9 +21,33 @@ public class VewCalculadora {
 		campoDigitacao.setBounds(30, 20, 340, 40);
 		campoDigitacao.requestFocusInWindow();// Mantém o foco no campo de digitação
 		
+		//BOTAO LIMPAR
+		JButton limpar = new JButton("C");
+		limpar.setBounds(30, 80, 60, 60);
+		limpar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				campoDigitacao.setText("");//limpa o campo de digitacao
+				
+			}});
+		
+		//BOTAO VIRGULA
+		JButton virgula = new JButton(",");
+		virgula.setBounds(170, 290, 60, 60);
+		virgula.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				campoDigitacao.setText(campoDigitacao.getText() + ".");
+				//campoDigitacao.requestFocusInWindow();
+			}
+			
+		});
+		
 		// BOTAO (1)
 		JButton botao1 = new JButton("1");
-		botao1.setBounds(30, 80, 60, 60);
+		botao1.setBounds(30, 150, 60, 60);
 		botao1.addActionListener(new ActionListener() {
 
 			@Override
@@ -37,7 +61,7 @@ public class VewCalculadora {
 		
 		// BOTAO (2)
 		JButton botao2 = new JButton("2");
-		botao2.setBounds(100, 80, 60, 60);
+		botao2.setBounds(100, 150, 60, 60);
 		botao2.addActionListener(new ActionListener() {
 
 			@Override
@@ -51,7 +75,7 @@ public class VewCalculadora {
 		
 		// BOTAO (3)
 		JButton botao3 = new JButton("3");
-		botao3.setBounds(170, 80, 60, 60);
+		botao3.setBounds(170, 150, 60, 60);
 		botao3.addActionListener(new ActionListener() {
 
 			@Override
@@ -65,7 +89,7 @@ public class VewCalculadora {
 		
 		// BOTAO (4)
 		JButton botao4 = new JButton("4");
-		botao4.setBounds(30, 150, 60, 60);
+		botao4.setBounds(30, 220, 60, 60);
 		botao4.addActionListener(new ActionListener() {
 
 			@Override
@@ -77,7 +101,7 @@ public class VewCalculadora {
 		
 		// BOTAO (5)
 		JButton botao5 = new JButton("5");
-		botao5.setBounds(100, 150, 60, 60);
+		botao5.setBounds(100, 220, 60, 60);
 		botao5.addActionListener(new ActionListener() {
 
 			@Override
@@ -89,7 +113,7 @@ public class VewCalculadora {
 		
 		// BOTAO (6)
 		JButton botao6 = new JButton("6");
-		botao6.setBounds(170, 150, 60, 60);
+		botao6.setBounds(170, 220, 60, 60);
 		botao6.addActionListener(new ActionListener() {
 
 			@Override
@@ -101,7 +125,7 @@ public class VewCalculadora {
 		
 		// BOTAO (7)
 		JButton botao7 = new JButton("7");
-		botao7.setBounds(30, 220, 60, 60);
+		botao7.setBounds(30, 290, 60, 60);
 		botao7.addActionListener(new ActionListener() {
 
 			@Override
@@ -113,7 +137,7 @@ public class VewCalculadora {
 		
 		// BOTAO (8)
 		JButton botao8 = new JButton("8");
-		botao8.setBounds(100, 220, 60, 60);
+		botao8.setBounds(100, 290, 60, 60);
 		botao8.addActionListener(new ActionListener() {
 
 			@Override
@@ -125,7 +149,7 @@ public class VewCalculadora {
 		
 		// BOTAO (9)
 		JButton botao9 = new JButton("9");
-		botao9.setBounds(170, 220, 60, 60);
+		botao9.setBounds(170, 290, 60, 60);
 		botao9.addActionListener(new ActionListener() {
 
 			@Override
@@ -137,7 +161,7 @@ public class VewCalculadora {
 		
 		//BOTAO (0)
         JButton botao0 = new JButton("0");
-        botao0.setBounds(100, 290, 60, 60);
+        botao0.setBounds(100, 360, 60, 60);
         botao0.addActionListener(new ActionListener() {
         	
             @Override
@@ -150,7 +174,7 @@ public class VewCalculadora {
 		
 		// BOTAO (+)
 		JButton botaoSomar = new JButton("+");
-		botaoSomar.setBounds(240, 80, 60, 60);
+		botaoSomar.setBounds(240, 150, 60, 60);
 		botaoSomar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -164,7 +188,7 @@ public class VewCalculadora {
 		
 		// BOTAO (-)
 		JButton botaoSubtracao = new JButton("-");
-		botaoSubtracao.setBounds(240, 150, 60, 60);
+		botaoSubtracao.setBounds(240, 220, 60, 60);
 		botaoSubtracao.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -190,7 +214,7 @@ public class VewCalculadora {
 		
 		// BOTAO (*)
         JButton botaoMultiplicacao = new JButton("*");
-        botaoMultiplicacao.setBounds(240, 220, 60, 60);
+        botaoMultiplicacao.setBounds(240, 360, 60, 60);
         botaoMultiplicacao.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -201,15 +225,32 @@ public class VewCalculadora {
             }
         });	
 		
+        //BOTAO (%)
+        JButton porcentagem = new JButton("%");
+        porcentagem.setBounds(170, 360, 60, 60);
+        porcentagem.addActionListener(new ActionListener() {
+
+        	//chat gpt fez isso (concertar essa gambiarra depois)
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			    double valor = Double.parseDouble(campoDigitacao.getText());
+		        double resultado = calculadora.porcentagem(valor);
+		        campoDigitacao.setText(String.valueOf(resultado));
+		        campoDigitacao.requestFocusInWindow();	
+				
+			}
+        	
+        });
+        
 		// BOTAO (=)
 		JButton botaoResultado = new JButton("=");
-		botaoResultado.setBounds(310, 80, 60, 270);
+		botaoResultado.setBounds(310, 150, 60, 270);
 		botaoResultado.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				calculadora.setB(Double.parseDouble(campoDigitacao.getText()));
 				double resultado = 0;
-				
+				try {
 				switch (operacao[0]) {
 					case "+":
 						resultado = calculadora.somar(calculadora.getA(), calculadora.getB());
@@ -223,9 +264,16 @@ public class VewCalculadora {
 					case "*":
 						resultado = calculadora.multiplicacao(calculadora.getA(), calculadora.getB());
 						break;
+					case "%":
+						resultado = calculadora.porcentagem(calculadora.getA());
+						break;
 				}
 				
 				campoDigitacao.setText(String.valueOf(resultado));//###EXPLICACAO NO FINAL DO MAIN(DIFICULDADE DE ENTENDER)###
+				}catch(ArithmeticException E) {
+					campoDigitacao.setText("Impossível a divisão por zero");
+                    //System.out.println("Impossível a divisão por zero");
+				}
 				campoDigitacao.requestFocusInWindow();
 			}
 		});
@@ -239,12 +287,15 @@ public class VewCalculadora {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// ADD JANELA
-		frame.add(botaoSomar);
 		frame.add(campoDigitacao);
+		frame.add(limpar);
+		frame.add(virgula);
+		frame.add(botaoSomar);
 		frame.add(botaoResultado);
 		frame.add(botaoSubtracao);
 		frame.add(botaoDivisao);
 		frame.add(botaoMultiplicacao);
+		frame.add(porcentagem);
 		frame.add(botao1);
 		frame.add(botao2);
 		frame.add(botao3);

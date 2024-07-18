@@ -32,6 +32,11 @@ public class Calculadora {
 		return a * b;
 	}
 
+	public double porcentagem (double a) {
+		this.a = a;
+		return a = a /100 ;
+	}
+	
 	public double getA() {
 		return a;
 	}
